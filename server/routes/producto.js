@@ -58,6 +58,28 @@ app.get('/producto/:id', verificaToken, (req, res) => {
 
 });
 
+app.get('/producto/buscar/:termino', verificaToken, (req, res) => {
+
+    let termino = req.params.termino;
+    let regExp = new RegExp(termino, 'i');
+    Producto.find({ nombre: regExp })
+            .populate('categoria', 'nombre')
+            .exec((err, categorias) => {
+                if ( err ) {
+                    return res.status(500).json({
+                        ok: false,
+                        err
+                    });
+                }
+
+                res.json({
+                    ok: true,
+                    categorias
+                });
+            });
+
+});
+
 app.post('/producto', verificaToken, (req, res) => {
 
     let body = req.body;
