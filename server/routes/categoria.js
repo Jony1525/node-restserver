@@ -80,7 +80,7 @@ app.put('/categoria/:id', [verificaToken, verificaAdmin_Role], (req, res) => {
     let id = req.params.id;
     let body = req.body;
 
-    Categoria.findByIdAndUpdate(id, body, { new: true, runValidators: true }, (err, categoria) => {
+    Categoria.updateOne(id, body, { new: true, runValidators: true }, (err, categoria) => {
 
         if ( err ) {
             return res.status(400).json({
