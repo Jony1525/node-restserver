@@ -11,5 +11,12 @@ const productoSchema = new Schema({
     img: { type: String, required: false }
 });
 
+productoSchema.methods.toJSON = function() {
+    let producto = this;
+    let productoObject = producto.toObject();
+    delete productoObject.__v;
+    return productoObject;
+}
+
 
 module.exports = mongoose.model('Producto', productoSchema);
