@@ -65,9 +65,8 @@ app.post('/usuario', [verificaToken, verificaAdmin_Role], function (req, res) {
 app.put('/usuario/:id', [verificaToken, verificaAdmin_Role], function (req, res) {
       
     let id = req.params.id;
-    let body = _.pick(req.body, ['nombre', 'email', 'img', 'role', 'estado']);
-
-    Usuario.findByIdAndUpdate(id, body, { new: true, runValidators: true }, (err, usuarioDB) => {
+    let body = _.pick(req.body, ['nombre', 'edad', 'email', 'estado']);
+    Usuario.updateOne({ _id: id }, body, (err, usuarioDB) => {
 
         if ( err ) {
             return res.status(400).json({
@@ -76,9 +75,20 @@ app.put('/usuario/:id', [verificaToken, verificaAdmin_Role], function (req, res)
             });
         }
 
-        res.json({
-            ok: true,
-            usuario: usuarioDB
+        if ( !usuarioDB ) {
+            return res.status(400).json({
+                ok: false,
+                err: {
+                    message: 'No se puede actualizar le usuario eb DB'
+                }
+            });
+        }
+
+        Usuario.findById(id, (err, usuario) => {
+            return res.json({
+                ok: true,
+                usuario
+            });
         });
     });
 

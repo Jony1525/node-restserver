@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const { verificaToken, verificaAdmin_Role } = require('../middlewares/autenticacion');
+const categoria = require('../models/categoria');
 const Categoria = require('../models/categoria');
 
 
@@ -75,12 +76,12 @@ app.post('/categoria', verificaToken, (req, res) => {
 
 });
 
-app.put('/categoria/:id', [verificaToken, verificaAdmin_Role], (req, res) => {
+app.put('/categoria/:id', [verificaToken, verificaAdmin_Role], async(req, res) => {
 
     let id = req.params.id;
     let body = req.body;
 
-    Categoria.updateOne(id, body, { new: true, runValidators: true }, (err, categoria) => {
+    Categoria.updateOne({_id: id }, body, (err, categoriaDB) => {
 
         if ( err ) {
             return res.status(400).json({
@@ -97,11 +98,12 @@ app.put('/categoria/:id', [verificaToken, verificaAdmin_Role], (req, res) => {
                 }
             });
         }
-
-        res.json({
-            ok: true,
-            categoria
-        })
+        Categoria.findById(id,(err, categoria) => {
+            return res.json({
+                ok: true,
+                categoria
+            });
+        });
 
     });
 

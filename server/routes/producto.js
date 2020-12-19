@@ -118,7 +118,7 @@ app.put('/producto/:id', verificaToken, (req, res)=> {
     let id = req.params.id;
     let body = req.body;
     
-    Producto.findByIdAndUpdate(id, body, { new: true, runValidators : true}, (err, productoDB) => {
+    Producto.updateOne({ _id: id}, body, { new: true, runValidators : true}, (err, productoDB) => {
         
         if ( err ) {
             return res.status(400).json({
@@ -127,10 +127,21 @@ app.put('/producto/:id', verificaToken, (req, res)=> {
             });
         }
 
-        res.json({
-            ok: false,
-            producto: productoDB
-        })
+        if ( !productoDB ) {
+            return res.status(400).json({
+                ok: false,
+                err: {
+                    message: 'No se puede actualizar el producto en la DB'
+                }
+            });
+        }
+
+        Producto.findById(id, (err, producto) => {
+            return res.json({
+                ok: true,
+                producto
+            })
+        });
     });
 
 });
@@ -162,7 +173,7 @@ app.delete('/producto/:id', verificaToken, (req, res) => {
         }
 
         res.json({
-            ok: false,
+            ok: true,
             producto: productoBD
         });
     
