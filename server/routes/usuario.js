@@ -4,6 +4,10 @@ const _ = require('underscore');
 const Usuario = require('../models/usuario');
 const { verificaToken, verificaAdmin_Role } = require('../middlewares/autenticacion');
 const app = express();
+const log4js = require('log4js');
+
+const logger = log4js.getLogger('USUARIO SERVICE');
+logger.level = ['info', 'error'];
 
 
 app.get('/usuario', verificaToken, function (req, res) {
@@ -19,6 +23,7 @@ app.get('/usuario', verificaToken, function (req, res) {
             .limit(limite)
             .exec((err, usuarios) => {
                 if ( err ) {
+                    logger.error('ERROR - OBTENER CATEGORÍAS: ', err);
                     return res.status(400).json({
                         ok: false,
                         err
@@ -49,12 +54,23 @@ app.post('/usuario', [verificaToken, verificaAdmin_Role], function (req, res) {
     usuario.save( (err, usuarioDB ) => {
 
         if ( err ) {
+            logger.error('ERROR - GUARDAR USUARIO: ', err);
             return res.status(400).json({
                 ok: false,
                 err
             });
         }
         
+        if ( !usuarioDB ) {
+            let error = {
+                message: 'No se puede crear el usuario en la DB'
+            }
+            logger.error('ERROR - CREAR USUARIO: ', error);
+            return res.status(400).json({
+                ok: false,
+                err: error
+            });
+        }
         res.json({
             ok: true,
             usuario: usuarioDB
@@ -69,6 +85,7 @@ app.put('/usuario/:id', [verificaToken, verificaAdmin_Role], function (req, res)
     Usuario.updateOne({ _id: id }, body, (err, usuarioDB) => {
 
         if ( err ) {
+            logger.error('ERROR - ACTUALIZAR USUARIO: ', err);
             return res.status(400).json({
                 ok: false,
                 err
@@ -76,11 +93,13 @@ app.put('/usuario/:id', [verificaToken, verificaAdmin_Role], function (req, res)
         }
 
         if ( !usuarioDB ) {
+            let error = {
+                message: 'No se puede actualizar le usuario eb DB'
+            };
+            logger.error('ERROR - ACTUALIZAR USUARIO: ', error);
             return res.status(400).json({
                 ok: false,
-                err: {
-                    message: 'No se puede actualizar le usuario eb DB'
-                }
+                err: error
             });
         }
 
@@ -103,6 +122,7 @@ app.delete('/usuario/:id', verificaToken, function (req, res) {
 
     Usuario.findByIdAndUpdate(id, body, { new: true }, (err, usuarioBorrado) => {
         if ( err ) {
+            logger.error('ERROR - ELIMINAR USUARIO: ', err);
             return res.status(400).json({
                 ok: false,
                 err
@@ -110,11 +130,13 @@ app.delete('/usuario/:id', verificaToken, function (req, res) {
         }
 
         if ( usuarioBorrado === null ) {
+            let error = {
+                message: 'Usuario no encontrado'
+            };
+            logger.error('ERROR - ELIMINAR USUARIO: ', error);
             return res.status(400).json({
                 ok: false,
-                err: {
-                    message: 'Usuario no encontrado'
-                }
+                err: error
             });
         }
 

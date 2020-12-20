@@ -1,20 +1,23 @@
 const express = require('express');
 const app = express();
 const { verificaToken, verificaAdmin_Role } = require('../middlewares/autenticacion');
-const categoria = require('../models/categoria');
 const Categoria = require('../models/categoria');
+const log4js = require('log4js');
+
+const logger = log4js.getLogger('CATEGORIA SERVICE');
+
+logger.leve = ['info', 'error'];
 
 
 app.get('/categoria',verificaToken, (req, res) => {
-
-
     Categoria.find({})
             .sort('descripcion')
             .populate('usuario', 'nombre email')
             .exec((err, categorias) => {
 
         if ( err ) {
-            res.status(400).json({
+            logger.error('ERROR - OBTENER CATEGORIAS: ', err);
+            return res.status(400).json({
                 ok: false,
                 err
             });
@@ -34,6 +37,7 @@ app.get('/categoria/:id', verificaToken, (req, res) => {
     Categoria.findById({ _id: id }).exec((err, categoria) => {
 
         if ( err ) {
+            logger.error('ERROR - OBTENER CATEGORIA POR ID: ', err);
             return res.status(400)
                 .json({
                     ok: false,
@@ -62,9 +66,21 @@ app.post('/categoria', verificaToken, (req, res) => {
 
     categoria.save((err, categoriaDB) => {
         if ( err ) {
+            logger.error('ERROR - GUARDAR CATEGORIA: ', err);
             return res.status(400).json({
                 ok: false,
                 err
+            });
+        }
+
+        if ( !categoriaDB ) {
+            let error = {
+                message: 'No se puede guardar le categoria en DB'
+            };
+            logger.error('ERROR - GUARDAR CATEGORIA: ', error);
+            return res.status(400).json({
+                ok: false,
+                err: error
             });
         }
 
@@ -84,6 +100,7 @@ app.put('/categoria/:id', [verificaToken, verificaAdmin_Role], async(req, res) =
     Categoria.updateOne({_id: id }, body, (err, categoriaDB) => {
 
         if ( err ) {
+            logger.error('ERROR - EDITAR CATEGORIA: ', err);
             return res.status(400).json({
                 ok: false,
                 err
@@ -91,6 +108,7 @@ app.put('/categoria/:id', [verificaToken, verificaAdmin_Role], async(req, res) =
         }
 
         if ( !categoriaDB ) {
+            logger.error('ERROR - EDITAR CATEGORIA: ', err);
             return res.status(400).json({
                 ok: false,
                 err: {
@@ -116,6 +134,7 @@ app.delete('/categoria/:id', [verificaToken, verificaAdmin_Role], (req, res) => 
 
     Categoria.findByIdAndRemove(id, (err, categoria) => {
         if ( err ) {
+            logger.error('ERROR - ELIMINAR CATEGORIA: ', err);
             return res.status(400).json({
                 ok: false,
                 err

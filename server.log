@@ -1,0 +1,72 @@
+[2020-12-19T17:10:13.888] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:10:29.004] [INFO] server - Se ha iniciado la aplicación
+[2020-12-19T17:10:47.105] [INFO] SERVER.JS - Se ha iniciado la aplicación
+[2020-12-19T17:11:25.840] [INFO] SERVER.JS - Se ha iniciado la aplicación
+[2020-12-19T17:11:30.619] [INFO] SERVER.JS - Se ha iniciado la aplicación
+[2020-12-19T17:11:34.089] [INFO] SERVER.JS - Se ha iniciado la aplicación
+[2020-12-19T17:11:42.369] [INFO] CATEGORIA.JS - Obteniendo categorias
+[2020-12-19T17:11:50.401] [INFO] CATEGORIA.JS - Obteniendo categorias
+[2020-12-19T17:12:29.565] [INFO] SERVER.JS - Se ha iniciado la aplicación
+[2020-12-19T17:12:36.315] [INFO] SERVER.JS - Se ha iniciado la aplicación
+[2020-12-19T17:13:41.638] [INFO] SERVER.JS - Se ha iniciado la aplicación
+[2020-12-19T17:13:52.043] [INFO] SERVER.JS - Se ha iniciado la aplicación
+[2020-12-19T17:14:01.391] [INFO] CATEGORIA.JS - Obteniendo categorias
+[2020-12-19T17:14:01.391] [ERROR] CATEGORIA.JS - ERROR
+[2020-12-19T17:15:22.425] [INFO] SERVER.JS - Se ha iniciado la aplicación
+[2020-12-19T17:15:45.615] [INFO] SERVER.JS - Se ha iniciado la aplicación
+[2020-12-19T17:21:30.586] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:22:43.826] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:23:00.830] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:23:09.987] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:23:13.842] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:23:30.439] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:23:39.321] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:23:47.962] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:24:04.180] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:24:16.425] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:24:25.850] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:24:46.708] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:25:18.341] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:25:22.489] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:25:23.653] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:26:12.036] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:26:25.364] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:26:30.024] [INFO] default - HOLA COMO ESTÁN
+[2020-12-19T17:27:00.268] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:27:16.023] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:27:18.234] [INFO] default - HOLA COMO ESTÁN
+[2020-12-19T17:27:18.234] [ERROR] default - HOLA COMO ESTÁN II
+[2020-12-19T17:27:36.511] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:28:24.284] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:28:26.554] [INFO] CATEGORIA SERVICE - 
+[2020-12-19T17:28:52.109] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:28:56.352] [INFO] CATEGORIA SERVICE - -------- CATEGORIA SERVICE --------
+[2020-12-19T17:29:12.548] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:29:50.289] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:30:32.316] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:30:48.979] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:31:10.124] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:31:10.890] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:31:21.179] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:31:22.907] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:31:25.080] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:31:28.869] [ERROR] CATEGORIA SERVICE - ERROR: 
+[2020-12-19T17:32:06.651] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:32:09.876] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:32:13.655] [ERROR] CATEGORIA SERVICE - ERROR:  null
+[2020-12-19T17:32:23.211] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:32:43.087] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:32:45.832] [ERROR] CATEGORIA SERVICE - ERROR:  { message: 'ERROR AL OBTENER LAS CATEGORÍAS' }
+[2020-12-19T17:33:01.460] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:33:03.546] [ERROR] CATEGORIA SERVICE - ERROR:  { message: 'ERROR AL OBTENER LAS CATEGORÍAS' }
+[2020-12-19T17:33:26.264] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:33:29.607] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:33:50.995] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:34:17.258] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:35:11.236] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:35:23.283] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:35:29.839] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:36:08.818] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:36:16.316] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:36:33.476] [INFO] cheese - Se ha iniciado la aplicación
+[2020-12-19T17:36:47.774] [INFO] cheese - Se ha iniciado la aplicación

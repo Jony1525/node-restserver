@@ -2,8 +2,10 @@ const express = require('express');
 const { verificaToken } = require('../middlewares/autenticacion');
 const { populate } = require('../models/producto');
 const app = express();
-
 const Producto = require('../models/producto');
+const log4js = require('log4js');
+
+const logger = log4js.getLogger('PRODUCTO SERVICE');
 
 app.get('/producto',verificaToken,(req, res) => {
     
@@ -19,6 +21,7 @@ app.get('/producto',verificaToken,(req, res) => {
             .populate('categoria', 'descripcion')
             .exec((err, productos) => {
                 if ( err ) {
+                    logger.error('ERROR - OBTENER PRODUCTOS: ', err);
                     return res.status(400).json({
                         ok: false,
                         err
@@ -44,6 +47,7 @@ app.get('/producto/:id', verificaToken, (req, res) => {
             .populate('categoria', 'descripcion')
             .exec((err, productoDB) => {
                 if ( err ) {
+                    logger.error('ERROR - OBTENER PRODUCTO POR ID: ', err);
                     return res.status(400).json({
                         ok: false,
                         err
@@ -65,6 +69,7 @@ app.get('/producto/buscar/:termino', verificaToken, (req, res) => {
     Producto.find({ nombre: regExp })
             .populate('categoria', 'nombre')
             .exec((err, categorias) => {
+                logger.error('ERROR - OBTENER PRODUCTO POR TÉRMINO: ', err);
                 if ( err ) {
                     return res.status(500).json({
                         ok: false,
@@ -101,6 +106,16 @@ app.post('/producto', verificaToken, (req, res) => {
             return res.status(400).json({
                 ok: false,
                 err
+            });
+        }
+
+        if ( !productoDB ) {
+            logger.error('ERROR - OBTENER PRODUCTOS: ');
+            return res.status(400).json({
+                ok: false,
+                err: {
+                    message: 'Error al guardar Producto en la DB'
+                }
             });
         }
 
